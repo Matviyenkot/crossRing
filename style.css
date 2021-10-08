@@ -19,6 +19,9 @@
     border-color: rgb(37, 36, 36);
     border-width: 2px;
 }
+.square:hover{
+    background-color: bisque;
+}
 .figures{
     display: flex;
     width: 900px;
@@ -28,15 +31,15 @@
 }
 .cross{
     background-color: red;
-    width: 300px;
-    height: 300px;
+    width: 298px;
+    height: 298px;
     text-align: center;
     font-size: 190pt;
 }
 .ring{
     background-color: blue;
-    width: 300px;
-    height: 300px;
+    width: 298px;
+    height: 298px;
     text-align: center;
     font-size: 190pt;
 }

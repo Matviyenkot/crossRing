@@ -48,34 +48,26 @@ function showFigure(elem){
 
 const row = [];
 
-function checkWinner(elem){
-
-    for ( let i=0; i<3; i++){
-        for (let j=0; j<3; j++){
-            if (lines[0].squares[0].textContent == 'X'){
-                    xCounter ++;
-                    console.log(xCounter);
-                }  
+function checkWinner(fig){
+        if(squares[0].innerText == `${fig}` && squares[1].innerText == `${fig}` && squares[2].innerText == `${fig}`){
+            console.log(`${fig} Win!!!`);      
         }
-    }
-
-    // if (lines[0].elem.innerHTML == 'X'){
-    //     xCounter ++;
-    // }  
-    // if (lines[0].elem.innerHTML == 'O'){
-    //     oCounter ++;
-    // }  
-
-    if (xCounter == 3){
-        console.log('cross win');
-    } 
-    if (oCounter == 3){
-        console.log('ring win');
-    }
+        if(squares[3].innerText == `${fig}` && squares[4].innerText == `${fig}` && squares[5].innerText == `${fig}`){
+            console.log(`${fig} Win!!!`);       
+        }
+        if(squares[6].innerText == `${fig}` && squares[7].innerText == `${fig}` && squares[8].innerText == `${fig}`){
+            console.log(`${fig} Win!!!`);       
+        }
+        if(squares[0].innerText == `${fig}` && squares[4].innerText == `${fig}` && squares[8].innerText == `${fig}`){
+            console.log(`${fig} Win!!!`);       
+        }
+        if(squares[2].innerText == `${fig}` && squares[4].innerText == `${fig}` && squares[6].innerText == `${fig}`){
+            console.log(`${fig} Win!!!`);       
+        }
 }
 
 
-
+console.log(squares);
 
 
 ring.classList.add('frame');
@@ -86,6 +78,11 @@ squares.forEach((e)=>{
         } else {
             console.log('end!');
         }
-        checkWinner(e);
+        checkWinner(e.innerText);
     })
 })
+
+
+
+
+    
