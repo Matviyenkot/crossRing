@@ -99,26 +99,39 @@ function restart (){
 
 ring.classList.add('frame');
 
-function render(){
+
     squares.forEach((e)=>{
-        e.addEventListener('click', () =>{
-            if (counter < 9){
-                showFigure(e);
-                checkWinner(e.innerText);
-            } 
-            if (counter == 9) {
-                restart();
-                console.log('end!');
-                if (!checkWinner()){
-                    alert ('nichiya');
+        
+            e.addEventListener('click', () =>{
+                if (counter < 9){
+                    showFigure(e);
+                    checkWinner(e.innerText);
+                    computer(squares);
+                    
+                } 
+                if (counter == 9) {
+                    restart();
+                    console.log('end!');
+                    if (!checkWinner()){
+                        alert ('nichiya');
+                    }
                 }
-            }
-        })
+            })
+        
+        
     })
+
+
+    if(e.innerText == ''){
+        //e.innerHTML = 'sda';
+        computer();
+    } else {
+
+    }
+
+function computer(elem){
+    let cell = Math.floor(Math.random() * 9);
+    showFigure(elem[cell]);
 }
-
-render();
-
-
 
     
