@@ -21,6 +21,7 @@ function showFigure(elem){
             counter ++;
             cross.classList.add('frame');
             ring.classList.remove('frame');
+            elem.style = 'background-color : red';
         }
         
     
@@ -34,6 +35,7 @@ function showFigure(elem){
             counter ++;
             ring.classList.add('frame');
             cross.classList.remove('frame');
+            elem.style = 'background-color : blue';
     }
     } else {
         console.log('figure already put');
@@ -42,46 +44,80 @@ function showFigure(elem){
             
         
 
-            console.log(triger);
-            console.log(counter);
+            // console.log(triger);
+            // console.log(counter);
 }
 
-const row = [];
+//const row = [];
 
 function checkWinner(fig){
         if(squares[0].innerText == `${fig}` && squares[1].innerText == `${fig}` && squares[2].innerText == `${fig}`){
-            console.log(`${fig} Win!!!`);      
+            alert (`${fig} Win!!!`);
+            restart();
         }
         if(squares[3].innerText == `${fig}` && squares[4].innerText == `${fig}` && squares[5].innerText == `${fig}`){
-            console.log(`${fig} Win!!!`);       
+            alert (`${fig} Win!!!`); 
+            restart();      
         }
         if(squares[6].innerText == `${fig}` && squares[7].innerText == `${fig}` && squares[8].innerText == `${fig}`){
-            console.log(`${fig} Win!!!`);       
+            alert (`${fig} Win!!!`); 
+            restart();      
+        }
+        if(squares[0].innerText == `${fig}` && squares[3].innerText == `${fig}` && squares[6].innerText == `${fig}`){
+            alert (`${fig} Win!!!`); 
+            restart();      
+        }
+        if(squares[1].innerText == `${fig}` && squares[4].innerText == `${fig}` && squares[7].innerText == `${fig}`){
+            alert (`${fig} Win!!!`); 
+            restart();      
+        }
+        if(squares[2].innerText == `${fig}` && squares[5].innerText == `${fig}` && squares[8].innerText == `${fig}`){
+            alert (`${fig} Win!!!`);  
+            restart();     
         }
         if(squares[0].innerText == `${fig}` && squares[4].innerText == `${fig}` && squares[8].innerText == `${fig}`){
-            console.log(`${fig} Win!!!`);       
+            alert (`${fig} Win!!!`); 
+            restart();      
         }
         if(squares[2].innerText == `${fig}` && squares[4].innerText == `${fig}` && squares[6].innerText == `${fig}`){
-            console.log(`${fig} Win!!!`);       
-        }
+            alert (`${fig} Win!!!`);   
+            restart();    
+        } 
+}
+
+function restart (){
+    for(var i = 0; i < squares.length; i++) {
+        squares[i].innerHTML = '';
+        squares[i].style = '';
+        counter =0;
+    }
 }
 
 
-console.log(squares);
+//console.log(squares);
 
 
 ring.classList.add('frame');
-squares.forEach((e)=>{
-    e.addEventListener('click', () =>{
-        if (counter < 9){
-            showFigure(e);
-        } else {
-            console.log('end!');
-        }
-        checkWinner(e.innerText);
-    })
-})
 
+function render(){
+    squares.forEach((e)=>{
+        e.addEventListener('click', () =>{
+            if (counter < 9){
+                showFigure(e);
+                checkWinner(e.innerText);
+            } 
+            if (counter == 9) {
+                restart();
+                console.log('end!');
+                if (!checkWinner()){
+                    alert ('nichiya');
+                }
+            }
+        })
+    })
+}
+
+render();
 
 
 
