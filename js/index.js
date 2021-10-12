@@ -1,3 +1,8 @@
+// при нажатии на заполненую клетку запускается ф-ция компутер ready!
+// на останнем шагу не определяет победителя
+
+
+
 document.addEventListener("DOMContentLoaded", function(event) {
     const cross = document.querySelector(".cross"),
         ring = document.querySelector(".ring"),
@@ -7,7 +12,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
     let triger = 0,
         counter =0;
 
+    let aPut = false;
+
     function showFigure(elem){
+        aPut = false;
 
         if( elem.innerHTML == "" ){
             if (triger == 0){                                    // ring
@@ -38,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }
         } else {
             console.log('figure already put');
+            aPut = true;
         }
 
 
@@ -93,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             winText.innerText = `${elem.innerText} WIN :)`;
             winWindow.classList.add('visible');
             console.log(`${elem.innerText} WIN :)`);
-            setTimeout(restart, 2000);
+            setTimeout(restart, 500);
             setTimeout(function (){
                 winWindow.classList.remove('visible');
             }, 2000);
@@ -103,6 +112,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             winText.innerText = `No WIN :)`;
             winWindow.classList.add('visible');
             console.log(`no win`);
+            aPut = false;
             setTimeout(restart, 2000);
             setTimeout(function (){
                 winWindow.classList.remove('visible');
@@ -124,10 +134,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
         e.addEventListener('click', () =>{
             if (counter <= 9){
                 showFigure(e);
-                if(e.innerText == ''){
-                    
+                if(aPut == false){
+                    computer(squares);
                 }
-                computer(squares);
                 showResult(e);
             }
         })
@@ -136,15 +145,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     function computer(elem){
 
-        let cell = Math.floor(Math.random() * 9);
+        let cell = Math.floor(Math.random() * 9);//0-8
         if (elem[cell].innerText !=''){
             computer(elem);
-        } else {
+        } else if (counter <=9) {
             showFigure(elem[cell]);
             // if(checkWinner(elem[cell].innerText) == true){
             //     showFigure(elem[cell]);
 
-                showResult(elem[cell]);
+            showResult(elem[cell]);
                     
                 //     winText.innerText = `${elem[cell].innerText} WIN :)`;
                 //     winWindow.classList.add('visible');
