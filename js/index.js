@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const cross = document.querySelector(".cross"),
         ring = document.querySelector(".ring"),
         squares = document.querySelectorAll('.square'),
-        lines = document.querySelectorAll('.line');
+        figure = document.querySelectorAll('.g-item');
 
     let triger = 0,
         counter =0;
@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 elem.append(figureInSquare);
                 triger =1;
                 counter ++;
-                cross.classList.add('g-item-check');
-                ring.classList.remove('g-item-check');
+                cross.classList.add('border');
+                ring.classList.remove('border');
                 /*elem.style = 'background-color : red';*/
             }
 
@@ -40,8 +40,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 elem.append(figureInSquare);
                 triger --;
                 counter ++;
-                ring.classList.add('g-item-check');
-                cross.classList.remove('g-item-check');
+                ring.classList.add('border');
+                cross.classList.remove('border');
                 /*elem.style = 'background-color : blue';*/
             }
         } else {
@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
 
-    ring.classList.add('frame');
+    ring.classList.add('border');
 
     let winWindow = document.querySelector('.win-window'),
         winText = winWindow.querySelector('.text');
@@ -175,6 +175,30 @@ document.addEventListener("DOMContentLoaded", function(event) {
          }
         console.log('computer square');
     }
+
+
+    ///////make choise of figure
+
+
+    // figure.forEach((e) =>{
+    //     e.addEventListener('click', () =>{
+    //         triger = e;
+    //         //console.log(e);
+    //         console.log(triger);
+    //     });
+    // });
+
+    figure[0].addEventListener('click', ()=>{
+        triger = 1;
+        console.log('x');
+        console.log(triger);
+    });
+
+    figure[1].addEventListener('click', ()=>{
+        triger = 0;
+        console.log('o');
+        console.log(triger);
+    });
 
 
 //убрать скрол
