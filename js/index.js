@@ -87,6 +87,30 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     }
 
+    function showResult(elem){
+
+        if(checkWinner(elem.innerText) == true){
+            winText.innerText = `${elem.innerText} WIN :)`;
+            winWindow.classList.add('visible');
+            console.log(`${elem.innerText} WIN :)`);
+            setTimeout(restart, 2000);
+            setTimeout(function (){
+                winWindow.classList.remove('visible');
+            }, 2000);
+
+        }
+        if(counter == 9 && !checkWinner(elem.innerText) ){
+            winText.innerText = `No WIN :)`;
+            winWindow.classList.add('visible');
+            console.log(`no win`);
+            setTimeout(restart, 2000);
+            setTimeout(function (){
+                winWindow.classList.remove('visible');
+            }, 2000);
+        }
+
+    }
+
 
 
 
@@ -94,28 +118,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     let winWindow = document.querySelector('.win-window'),
         winText = winWindow.querySelector('.text');
+
+
     squares.forEach((e)=>{
         e.addEventListener('click', () =>{
-            if (counter < 9){
+            if (counter <= 9){
                 showFigure(e);
+                if(e.innerText == ''){
+                    
+                }
                 computer(squares);
-                if(checkWinner(e.innerText) == true){
-                    winText.innerText = `${e.innerText} WIN :)`;
-                    winWindow.classList.add('visible');
-                    setTimeout(restart, 2000);
-                    setTimeout(function (){
-                        winWindow.classList.remove('visible');
-                    }, 2000);
-
-                }
-                if(counter == 9 && !checkWinner(e.innerText) ){
-                    winText.innerText = `No WIN :)`;
-                    winWindow.classList.add('visible');
-                    setTimeout(restart, 2000);
-                    setTimeout(function (){
-                        winWindow.classList.remove('visible');
-                    }, 2000);
-                }
+                showResult(e);
             }
         })
     })
@@ -123,36 +136,33 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     function computer(elem){
 
-        let cell = Math.floor(Math.random() * 10);
+        let cell = Math.floor(Math.random() * 9);
         if (elem[cell].innerText !=''){
             computer(elem);
         } else {
             showFigure(elem[cell]);
-            if(checkWinner(elem[cell].innerText) == true){
-                showFigure(elem[cell]);
+            // if(checkWinner(elem[cell].innerText) == true){
+            //     showFigure(elem[cell]);
 
+                showResult(elem[cell]);
+                    
+                //     winText.innerText = `${elem[cell].innerText} WIN :)`;
+                //     winWindow.classList.add('visible');
+                //     setTimeout(restart, 2000);
+                //     setTimeout(function (){
+                //         winWindow.classList.remove('visible');
+                //     }, 2000);
 
-
-
-                if(checkWinner(elem[cell].innerText) == true){
-                    console.log('if')
-                    winText.innerText = `${elem[cell].innerText} WIN :)`;
-                    winWindow.classList.add('visible');
-                    setTimeout(restart, 2000);
-                    setTimeout(function (){
-                        winWindow.classList.remove('visible');
-                    }, 2000);
-
-                }
-                if(counter == 9 && !checkWinner(elem[cell].innerText) ){
-                    winText.innerText = `No WIN :)`;
-                    winWindow.classList.add('visible');
-                    setTimeout(restart, 2000);
-                    setTimeout(function (){
-                        winWindow.classList.remove('visible');
-                    }, 2000);
-                }
-            }
+                
+                // if(counter == 9 && !checkWinner(elem[cell].innerText) ){
+                //     winText.innerText = `No WIN :)`;
+                //     winWindow.classList.add('visible');
+                //     setTimeout(restart, 2000);
+                //     setTimeout(function (){
+                //         winWindow.classList.remove('visible');
+                //     }, 2000);
+                // }
+            
          }
         console.log('computer square');
     }
