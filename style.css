@@ -1,0 +1,88 @@
+.pt-80 {
+  padding-top: 50px;
+}
+.item {
+  font-size: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.gameField {
+  padding-top: 50px;
+  width: 100%;
+  height: 100%;
+}
+.gameField .line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gameField .square {
+  width: 100px;
+  height: 100px;
+  background: #fff;
+  margin: 10px;
+  box-shadow: 0px 0px 14px 2px #66666675;
+}
+.figures {
+  padding-top: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.figures .g-item {
+  margin: 0 40px;
+  padding: 20px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 14px 2px #66666675;
+}
+.cross {
+  font-size: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.ring {
+  font-size: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.win-window {
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0000008c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.win-window .text {
+  border: 1px solid;
+  font-size: 120px;
+  background: #000000b5;
+  color: #fff;
+  padding: 30px;
+}
+.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.5s;
+}
+.check {
+  margin: 0 40px;
+  padding: 20px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 14px 2px #66666675;
+  border: red;
+  border-width: 10px;
+}
+/*# sourceMappingURL=style.css.map */
